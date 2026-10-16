@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Búsqueda del tesoro</title>
+<style>
+body{font-family:system-ui,sans-serif;background:#0d1117;color:#e6edf3;margin:0;padding:16px;max-width:480px;margin:auto}
+h1{font-size:1.2rem;color:#58a6ff} .card{background:#161b22;border-radius:12px;padding:14px;margin:12px 0}
+button{background:#238636;color:#fff;border:0;border-radius:8px;padding:12px;margin:4px 0;width:100%;font-size:1rem}
+button.sec{background:#30363d;width:auto;padding:10px 14px} input[type=text]{width:100%;padding:10px;box-sizing:border-box;border-radius:8px;border:0}
+#flecha{font-size:90px;text-align:center;transition:transform .3s;line-height:1.1} .small{font-size:.8rem;color:#8b949e}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+</style></head><body>
+<h1 id="titulo">Cargando…</h1>
+<div class="card" id="estado"></div>
+<div class="card" id="juego"></div>
+<div class="card"><label><input type="checkbox" id="sim"> Modo ensayo (ubicación simulada)</label>
+<div id="simctl" hidden><div class="grid"><button class="sec" onclick="mover(1,0)">↑ N</button><button class="sec" onclick="mover(-1,0)">↓ S</button><button class="sec" onclick="mover(0,-1)">← O</button><button class="sec" onclick="mover(0,1)">→ E</button></div>
+<button class="sec" onclick="irAlPunto()">Teletransportar al punto actual</button></div></div>
+<button class="sec" onclick="pedirBrujula()">Activar brújula del celular</button>
+<button class="sec" onclick="if(confirm('¿Reiniciar?')){localStorage.clear();location.reload()}">Reiniciar mi progreso</button>
+<script>
+let cfg, S={idx:0,score:0,t0:null,tPunto:null}, pos=null, heading=null, respaldoOk=false;
+const R=6371000, rad=x=>x*Math.PI/180, deg=x=>x*180/Math.PI;
+// Distancia entre dos coordenadas (fórmula haversine)
+function haversine(a,b,c,d){const dLa=rad(c-a),dLo=rad(d-b);
+ const h=Math.sin(dLa/2)**2+Math.cos(rad(a))*Math.cos(rad(c))*Math.sin(dLo/2)**2;
+ return 2*R*Math.asin(Math.sqrt(h));}
+// Rumbo (0°=norte) desde A hacia B
+function rumbo(a,b,c,d){const y=Math.sin(rad(d-b))*Math.cos(rad(c));
+ const x=Math.cos(rad(a))*Math.sin(rad(c))-Math.sin(rad(a))*Math.cos(rad(c))*Math.cos(rad(d-b));
+ return (deg(Math.atan2(y,x))+360)%360;}
+const guardar=()=>localStorage.setItem('tesoro',JSON.stringify(S));
+async function init(){
+ cfg=await (await fetch('config.json')).json();
+ const g=localStorage.getItem('tesoro'); if(g) S=JSON.parse(g);
+ if(!S.t0){S.t0=Date.now();S.tPunto=Date.now();guardar();}
+ document.getElementById('titulo').textContent=cfg.nombre_juego;
+ navigator.geolocation.watchPosition(p=>{if(!sim.checked){pos={lat:p.coords.latitude,lng:p.coords.longitude,acc:p.coords.accuracy};}},
+  e=>{document.getElementById('estado').textContent='Sin GPS: '+e.message},{enableHighAccuracy:true,maximumAge:2000});
+ setInterval(render,1000);
+}
+sim.onchange=()=>{simctl.hidden=!sim.checked; if(sim.checked)pos={...cfg.simulacion_inicio,acc:0}};
+function mover(n,e){pos.lat+=n*10/111320; pos.lng+=e*10/(111320*Math.cos(rad(pos.lat))); render();}
+function irAlPunto(){const p=cfg.puntos[S.idx]; if(p){pos={lat:p.latitud,lng:p.longitud,acc:0};render();}}
+function pedirBrujula(){
+ const h=e=>{heading=e.webkitCompassHeading??(e.alpha!=null?360-e.alpha:null)};
+ if(typeof DeviceOrientationEvent!=='undefined'&&DeviceOrientationEvent.requestPermission)
+  DeviceOrientationEvent.requestPermission().then(r=>{if(r==='granted')addEventListener('deviceorientation',h)});
+ else addEventListener('deviceorientationabsolute',h,true), addEventListener('deviceorientation',h);
+}
+function render(){
+ const est=document.getElementById('estado'), j=document.getElementById('juego');
+ if(S.idx>=cfg.puntos.length){est.innerHTML='';j.innerHTML=`<h2>🎉 ¡Sistema compilado!</h2><p>Recuperaron los 12 fragmentos.</p><p>Puntaje: <b>${S.score}</b></p>`;return;}
+ const p=cfg.puntos[S.idx];
+ est.innerHTML=`Punto <b>${S.idx+1}/${cfg.puntos.length}</b> · Puntaje <b>${S.score}</b>`;
+ if(document.getElementById('desafio')) return; // no redibujar mientras responden
+ if(!pos){j.innerHTML='<p>Esperando ubicación… (aceptá el permiso de GPS)</p>';return;}
+ const d=haversine(pos.lat,pos.lng,p.latitud,p.longitud);
+ // En el proyecto final esta validación debe repetirse en el servidor (Edge Function)
+ if(d<=p.radio_metros||respaldoOk){mostrarDesafio(p);return;}
+ const b=cfg.brujula, ventana=Math.floor(Date.now()/1000/b.cambia_cada_segundos);
+ const miente=ventana%2===0;  // regla: alterna cada N segundos
+ let ang=rumbo(pos.lat,pos.lng,p.latitud,p.longitud);
+ if(miente) ang=(ang+b.desvio_mentira_grados)%360;
+ if(heading!=null) ang=(ang-heading+360)%360;
+ j.innerHTML=`<div id="flecha" style="transform:rotate(${ang}deg);color:${miente?'#58a6ff':'#f85149'}">➤</div>
+ <p style="text-align:center">Distancia: <b>${Math.round(d)} m</b> (radio ${p.radio_metros} m)${pos.acc?` · precisión ±${Math.round(pos.acc)} m`:''}</p>
+ <p>🧭 Pista: <b>${p.pista}</b></p>
+ ${heading==null?'<p class="small">Sin brújula: la flecha apunta respecto al norte.</p>':''}
+ <input type="text" id="cod" placeholder="Código de respaldo (si falla el GPS)"><button class="sec" onclick="usarRespaldo()">Usar código</button>`;
+ j.querySelector('#cod').onfocus=()=>{};
+}
+function usarRespaldo(){const p=cfg.puntos[S.idx], v=document.getElementById('cod').value.trim().toUpperCase();
+ if(v===p.codigo_respaldo_manual){respaldoOk=true;S.usoRespaldo=true;render();}else alert('Código incorrecto');}
+function mostrarDesafio(p){
+ const d=p.desafio;
+ juego.innerHTML=`<div id="desafio"><h3>✅ ¡Llegaron!</h3><p>${d.pregunta}</p>`+
+  d.opciones.map(o=>`<button onclick="responder('${o.replace(/'/g,"\\'")}')">${o}</button>`).join('')+`</div>`;
+}
+function responder(o){
+ const p=cfg.puntos[S.idx], pt=cfg.puntaje;
+ if(o!==p.desafio.respuesta_correcta){S.score=Math.max(0,S.score-pt.penal_error);guardar();alert('Incorrecto (-'+pt.penal_error+')');estado.innerHTML='Puntaje '+S.score;return;}
+ const seg=(Date.now()-S.tPunto)/1000;
+ const bonus=Math.max(0,Math.round(pt.bonus_max_velocidad-seg/10));
+ S.score+=pt.por_acierto+bonus-(respaldoOk?pt.penal_respaldo:0);
+ alert(`¡Correcto! Fragmento ${S.idx+1}/12 recuperado. Bonus velocidad: +${bonus}`);
+ S.idx++;S.tPunto=Date.now();respaldoOk=false;guardar();juego.innerHTML='';render();
+}
+init();
+</script></body></html>

@@ -1,0 +1,264 @@
+{
+ "nombre_juego": "El código perdido de la Plaza del Congreso",
+ "duracion_minutos": 240,
+ "plaza_nombre": "Plaza del Congreso",
+ "mecanismo_validacion": "brujula_tramposa",
+ "brujula": {
+  "cambia_cada_segundos": 8,
+  "color_verdad": "rojo",
+  "color_miente": "azul",
+  "desvio_mentira_grados": 120
+ },
+ "puntaje": {
+  "por_acierto": 100,
+  "bonus_max_velocidad": 50,
+  "penal_error": 10,
+  "penal_respaldo": 30
+ },
+ "simulacion_inicio": {
+  "lat": -34.6085,
+  "lng": -58.392
+ },
+ "puntos": [
+  {
+   "id": 1,
+   "nombre": "En frente de la auditoría",
+   "latitud": -34.609344,
+   "longitud": -58.39093,
+   "radio_metros": 30,
+   "pista": "En frente de la auditoría",
+   "desafio": {
+    "pregunta": "¿Qué paradigma organiza el código mediante clases y objetos?",
+    "tipo": "opcion_multiple",
+    "opciones": [
+     "Orientado a objetos",
+     "Funcional",
+     "Declarativo",
+     "Lógico"
+    ],
+    "respuesta_correcta": "Orientado a objetos"
+   },
+   "codigo_respaldo_manual": "AUDITORIA01"
+  },
+  {
+   "id": 2,
+   "nombre": "Esquina Hotel Plaza Congreso",
+   "latitud": -34.609272,
+   "longitud": -58.390451,
+   "radio_metros": 30,
+   "pista": "La otra esquina del hotel Plaza Congreso",
+   "desafio": {
+    "pregunta": "¿Qué paradigma se basa en funciones matemáticas?",
+    "tipo": "opcion_multiple",
+    "opciones": [
+     "Imperativo",
+     "Funcional",
+     "Lógico",
+     "Orientado a objetos"
+    ],
+    "respuesta_correcta": "Funcional"
+   },
+   "codigo_respaldo_manual": "HOTEL02"
+  },
+  {
+   "id": 3,
+   "nombre": "Banco de la Plaza",
+   "latitud": -34.609278,
+   "longitud": -58.390101,
+   "radio_metros": 30,
+   "pista": "Alrededor de un banco",
+   "desafio": {
+    "pregunta": "¿Qué concepto permite crear una clase a partir de otra?",
+    "tipo": "opcion_multiple",
+    "opciones": [
+     "Polimorfismo",
+     "Encapsulamiento",
+     "Herencia",
+     "Abstracción"
+    ],
+    "respuesta_correcta": "Herencia"
+   },
+   "codigo_respaldo_manual": "BANCO03"
+  },
+  {
+   "id": 4,
+   "nombre": "Cine Gaumont",
+   "latitud": -34.609262,
+   "longitud": -58.389489,
+   "radio_metros": 30,
+   "pista": "En frente del cine Gaumont",
+   "desafio": {
+    "pregunta": "¿Qué concepto permite que un objeto adopte diferentes comportamientos?",
+    "tipo": "opcion_multiple",
+    "opciones": [
+     "Polimorfismo",
+     "Herencia",
+     "Recursión",
+     "Clase"
+    ],
+    "respuesta_correcta": "Polimorfismo"
+   },
+   "codigo_respaldo_manual": "GAUMONT04"
+  },
+  {
+   "id": 5,
+   "nombre": "Circunferencia del piso",
+   "latitud": -34.609512,
+   "longitud": -58.389489,
+   "radio_metros": 30,
+   "pista": "Rodea la circunferencia del piso",
+   "desafio": {
+    "pregunta": "¿Cómo se llama el molde que permite crear objetos?",
+    "tipo": "opcion_multiple",
+    "opciones": [
+     "Instancia",
+     "Método",
+     "Clase",
+     "Variable"
+    ],
+    "respuesta_correcta": "Clase"
+   },
+   "codigo_respaldo_manual": "PISO05"
+  },
+  {
+   "id": 6,
+   "nombre": "Fuente Principal",
+   "latitud": -34.609513,
+   "longitud": -58.390162,
+   "radio_metros": 30,
+   "pista": "Derecha de la fuente",
+   "desafio": {
+    "pregunta": "¿Qué paradigma se basa en instrucciones paso a paso?",
+    "tipo": "opcion_multiple",
+    "opciones": [
+     "Declarativo",
+     "Imperativo",
+     "Funcional",
+     "Lógico"
+    ],
+    "respuesta_correcta": "Imperativo"
+   },
+   "codigo_respaldo_manual": "FUENTE06"
+  },
+  {
+   "id": 7,
+   "nombre": "Entre Fuente y Estatua",
+   "latitud": -34.609555,
+   "longitud": -58.39074,
+   "radio_metros": 30,
+   "pista": "Entre la fuente y la estatua",
+   "desafio": {
+    "pregunta": "¿Qué elemento de la POO protege los datos internos de un objeto?",
+    "tipo": "opcion_multiple",
+    "opciones": [
+     "Encapsulamiento",
+     "Abstracción",
+     "Herencia",
+     "Polimorfismo"
+    ],
+    "respuesta_correcta": "Encapsulamiento"
+   },
+   "codigo_respaldo_manual": "ESTATUA07"
+  },
+  {
+   "id": 8,
+   "nombre": "Sur de la Estatua",
+   "latitud": -34.609976,
+   "longitud": -58.39093,
+   "radio_metros": 30,
+   "pista": "Al sur de la estatua",
+   "desafio": {
+    "pregunta": "¿Qué paradigma describe qué resultado se quiere sin detallar los pasos?",
+    "tipo": "opcion_multiple",
+    "opciones": [
+     "Imperativo",
+     "Declarativo",
+     "Procedural",
+     "Estructurado"
+    ],
+    "respuesta_correcta": "Declarativo"
+   },
+   "codigo_respaldo_manual": "SUR08"
+  },
+  {
+   "id": 9,
+   "nombre": "Estatua y Congreso",
+   "latitud": -34.609702,
+   "longitud": -58.391206,
+   "radio_metros": 30,
+   "pista": "Entre la estatua y el Congreso",
+   "desafio": {
+    "pregunta": "¿Cómo se llama una función que puede llamarse a sí misma?",
+    "tipo": "opcion_multiple",
+    "opciones": [
+     "Bucle",
+     "Recursión",
+     "Callback",
+     "Lambda"
+    ],
+    "respuesta_correcta": "Recursión"
+   },
+   "codigo_respaldo_manual": "CONGRESO09"
+  },
+  {
+   "id": 10,
+   "nombre": "Monumento Ricardo Balbín",
+   "latitud": -34.609887,
+   "longitud": -58.389671,
+   "radio_metros": 30,
+   "pista": "Izquierda de Ricardo Balbín",
+   "desafio": {
+    "pregunta": "¿Qué lenguaje se asocia con la programación lógica?",
+    "tipo": "opcion_multiple",
+    "opciones": [
+     "Prolog",
+     "Haskell",
+     "Java",
+     "Python"
+    ],
+    "respuesta_correcta": "Prolog"
+   },
+   "codigo_respaldo_manual": "BALBIN10"
+  },
+  {
+   "id": 11,
+   "nombre": "Biblioteca y Estatua",
+   "latitud": -34.610029,
+   "longitud": -58.391016,
+   "radio_metros": 30,
+   "pista": "Entre la biblioteca y la estatua",
+   "desafio": {
+    "pregunta": "¿Qué concepto de la POO oculta detalles internos y muestra lo esencial?",
+    "tipo": "opcion_multiple",
+    "opciones": [
+     "Abstracción",
+     "Polimorfismo",
+     "Herencia",
+     "Instanciación"
+    ],
+    "respuesta_correcta": "Abstracción"
+   },
+   "codigo_respaldo_manual": "BIBLIO11"
+  },
+  {
+   "id": 12,
+   "nombre": "Vereda 10 de Diciembre",
+   "latitud": -34.609701,
+   "longitud": -58.391384,
+   "radio_metros": 30,
+   "pista": "Vereda de 10 de diciembre",
+   "desafio": {
+    "pregunta": "¿Qué paradigma usa reglas y hechos para obtener conclusiones?",
+    "tipo": "opcion_multiple",
+    "opciones": [
+     "Lógico",
+     "Funcional",
+     "Imperativo",
+     "Orientado a Objetos"
+    ],
+    "respuesta_correcta": "Lógico"
+   },
+   "codigo_respaldo_manual": "VEREDA12"
+  }
+ ]
+}
