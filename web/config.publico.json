@@ -1,0 +1,15 @@
+{
+ "nombre_juego": "El código perdido de la Plaza del Congreso",
+ "duracion_minutos": 240,
+ "plaza_nombre": "Plaza del Congreso",
+ "brujula": {
+  "cambia_cada_segundos": 8,
+  "color_verdad": "rojo",
+  "color_miente": "azul",
+  "desvio_mentira_grados": 120
+ },
+ "simulacion_inicio": {
+  "lat": -34.6085,
+  "lng": -58.392
+ }
+}
