@@ -9,6 +9,7 @@ table{width:100%;font-size:.85rem;border-collapse:collapse}td,th{padding:4px;tex
 <div class="card" id="login"><input id="em" placeholder="Email"><input id="pw" type="password" placeholder="Contraseña"><button onclick="entrar()">Entrar</button></div>
 <div id="panel" hidden>
  <div class="card">Partida: <input id="cod" value="PLAZA-2026"> <button onclick="cargar()">Actualizar</button> <button class="r" onclick="reiniciar()">Reiniciar partida</button></div>
+ <div class="card"><h3>Equipos (borrar uno si se equivocó al registrarse)</h3><div id="eqs"></div></div>
  <div class="card"><h3>Ranking</h3><div id="rank"></div></div>
  <div class="card"><h3>Participantes (datos personales)</h3><div id="parts"></div></div>
  <div class="card"><h3>Últimos eventos de llegada</h3><div id="logs"></div></div>
@@ -26,10 +27,14 @@ async function cargar(){
  const c=$('cod').value;
  const rk=await (await fetch(URL_SB+'/rest/v1/rpc/ranking',{method:'POST',headers:H(),body:JSON.stringify({p_codigo:c})})).json();
  $('rank').innerHTML=tabla(['#','Equipo','Puntos completados','Puntaje','Tiempo'],rk.map((x,i)=>[i+1,x.nombre,x.completados,x.puntaje,fmt(x.segundos)]));
+ const eq=await get('equipos?select=id,nombre,completados,puntaje&order=nombre');
+ $('eqs').innerHTML='<table>'+eq.map(e=>`<tr><td>${esc(e.nombre)}</td><td>${e.completados} puntos</td><td><button class="r" onclick="borrarEq('${e.id}')">Borrar</button></td></tr>`).join('')+'</table>';
  const ps=await get('participantes?select=nombre,apellido,edad,telefono,instagram,autorizacion_tutor,equipos(nombre)');
  $('parts').innerHTML=tabla(['Equipo','Nombre','Edad','Teléfono','Instagram','Tutor'],ps.map(p=>[p.equipos?.nombre,p.nombre+' '+p.apellido,p.edad,p.telefono,p.instagram,p.autorizacion_tutor?'sí':'']));
  const lg=await get('registros_llegada?select=punto_id,fecha_hora,distancia_m,precision_m,es_valido,uso_codigo_respaldo,equipos(nombre)&order=fecha_hora.desc&limit=40');
  $('logs').innerHTML=tabla(['Hora','Equipo','Punto','Dist. (m)','Precisión (m)','Válido','Respaldo'],lg.map(l=>[new Date(l.fecha_hora).toLocaleTimeString(),l.equipos?.nombre,l.punto_id,Math.round(l.distancia_m),Math.round(l.precision_m??0),l.es_valido?'sí':'no',l.uso_codigo_respaldo?'sí':'']));}
+async function borrarEq(id){if(!confirm('¿Borrar este equipo y los datos de sus participantes?'))return;
+ await fetch(URL_SB+'/rest/v1/rpc/borrar_equipo',{method:'POST',headers:H(),body:JSON.stringify({p_equipo:id})});cargar();}
 async function reiniciar(){if(!confirm('Esto BORRA todos los equipos y los datos personales de la partida. ¿Seguro?'))return;
  await fetch(URL_SB+'/rest/v1/rpc/reiniciar_partida',{method:'POST',headers:H(),body:JSON.stringify({p_codigo:$('cod').value})});cargar();}
 </script></body></html>
