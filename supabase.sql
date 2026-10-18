@@ -198,4 +198,3 @@ begin
 end $$;
 revoke execute on function reiniciar_mi_equipo(uuid) from public;
 grant execute on function reiniciar_mi_equipo(uuid) to anon, authenticated;
-
