@@ -30,7 +30,9 @@ table{width:100%;font-size:.85rem;border-collapse:collapse}td,th{padding:4px;tex
   <button class="sec" onclick="mover(1,0)">↑N</button><button class="sec" onclick="mover(-1,0)">↓S</button><button class="sec" onclick="mover(0,-1)">←O</button><button class="sec" onclick="mover(0,1)">→E</button>
   <button class="sec" onclick="irAlPunto()">Ir al punto</button></div>
  <button class="sec" onclick="pedirBrujula()">Activar brújula del celular</button>
- <details class="card"><summary>Código de recuperación</summary><p class="small">Guardalo: sirve si cambian de celular.</p><b id="tok" style="word-break:break-all"></b></details>
+ <details class="card"><summary>Código de recuperación</summary><p class="small">Guardalo: sirve si cambian de celular.</p><b id="tok" style="word-break:break-all"></b>
+  <p><button class="sec" onclick="salir()">Salir de este celular</button></p>
+  <p><button class="sec" onclick="borrarMiEquipo()">Me equivoqué: borrar mi equipo y registrarme de nuevo</button></p></details>
 </div>
 <script>
 const URL_SB='https://yzhqlkcbyffrmkthxxbu.supabase.co', KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inl6aHFsa2NieWZmcm1rdGh4eGJ1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTIxMjk0OTEsImV4cCI6MjEwNzcwNTQ5MX0.fvtNk-eVofsxZ4gA4jOoz_KUte7gddvBMd52jCl6bK4';
@@ -85,6 +87,9 @@ function tick(){
  $('dist').innerHTML=`Distancia: <b>${Math.round(D)} m</b> (radio ${p.radio_metros} m)${pos.acc?' · precisión ±'+Math.round(pos.acc)+' m':''}`;
  $('av').textContent=(heading==null?'Sin brújula: la flecha apunta respecto al norte. ':'')+(pos.acc>60?'⚠ Señal GPS débil.':'');}
 function auto(){if(E&&!E.terminado&&!E.llegada_validada&&pos&&D!=null&&D<=E.punto.radio_metros+Math.min(pos.acc||0,30))validar();}
+function salir(){if(!confirm('Vas a salir de este celular. Guardá tu código de recuperación para volver. ¿Seguro?'))return;localStorage.removeItem('token');location.reload()}
+async function borrarMiEquipo(){if(!confirm('Se borra tu equipo y los datos cargados para que te registres de nuevo. ¿Seguro?'))return;
+ try{await rpc('reiniciar_mi_equipo',{p_token:T});localStorage.removeItem('token');location.reload()}catch(e){alert(e.message)}}
 // ---------- ubicación, brújula, ensayo ----------
 function mover(n,e){pos.lat+=n*10/111320;pos.lng+=e*10/(111320*Math.cos(rad(pos.lat)));tick()}
 function irAlPunto(){if(E&&E.punto){pos={lat:E.punto.latitud,lng:E.punto.longitud,acc:0};tick()}}
@@ -101,6 +106,11 @@ async function refRank(){if($('rk').hidden)return;try{const r=await rpc('ranking
  for(let i=0;i<3;i++)$('parts').insertAdjacentHTML('beforeend',formP(i));
  if(new URLSearchParams(location.search).has('ensayo')){simOn=true;pos={...cfg.simulacion_inicio,acc:0}}
  else navigator.geolocation.watchPosition(p=>{pos={lat:p.coords.latitude,lng:p.coords.longitude,acc:p.coords.accuracy}},e=>{if($('dist'))$('dist').textContent='Sin GPS: '+e.message},{enableHighAccuracy:true,maximumAge:3000});
+ if(T){try{await cargar()}catch(e){$('reg').hidden=false;alert('No se pudo recuperar la sesión: '+e.message)}}else $('reg').hidden=false;
+ setInterval(tick,1000);setInterval(auto,5000);setInterval(refRank,20000);
+})();
+</script></body></html>
+
  if(T){try{await cargar()}catch(e){$('reg').hidden=false;alert('No se pudo recuperar la sesión: '+e.message)}}else $('reg').hidden=false;
  setInterval(tick,1000);setInterval(auto,5000);setInterval(refRank,20000);
 })();
