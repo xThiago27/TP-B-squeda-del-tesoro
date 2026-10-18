@@ -39,7 +39,6 @@ async function reiniciar(){if(!confirm('Esto BORRA todos los equipos y los datos
  await fetch(URL_SB+'/rest/v1/rpc/reiniciar_partida',{method:'POST',headers:H(),body:JSON.stringify({p_codigo:$('cod').value})});cargar();}
 </script></body></html>
 
-
  await fetch(URL_SB+'/rest/v1/rpc/borrar_equipo',{method:'POST',headers:H(),body:JSON.stringify({p_equipo:id})});cargar();}
 async function reiniciar(){if(!confirm('Esto BORRA todos los equipos y los datos personales de la partida. ¿Seguro?'))return;
  await fetch(URL_SB+'/rest/v1/rpc/reiniciar_partida',{method:'POST',headers:H(),body:JSON.stringify({p_codigo:$('cod').value})});cargar();}
