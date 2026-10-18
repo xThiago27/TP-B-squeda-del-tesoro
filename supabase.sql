@@ -178,3 +178,11 @@ revoke execute on all functions in schema public from public, anon, authenticate
 grant execute on function registrar_equipo(text,text,jsonb), estado_equipo(uuid),
   validar_llegada(uuid,float8,float8,float8,text), responder(uuid,text), ranking(text) to anon, authenticated;
 grant execute on function reiniciar_partida(text) to authenticated;
+
+-- ===== Borrar un solo equipo (solo organizador) =====
+create or replace function borrar_equipo(p_equipo uuid)
+returns void language sql security definer set search_path=public as $$
+ delete from equipos where id=p_equipo $$;
+revoke execute on function borrar_equipo(uuid) from public, anon;
+grant execute on function borrar_equipo(uuid) to authenticated;
+
