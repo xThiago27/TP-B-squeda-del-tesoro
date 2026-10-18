@@ -186,3 +186,16 @@ returns void language sql security definer set search_path=public as $$
 revoke execute on function borrar_equipo(uuid) from public, anon;
 grant execute on function borrar_equipo(uuid) to authenticated;
 
+-- ===== El equipo puede borrarse y registrarse de nuevo, solo si todavía no avanzó =====
+create or replace function reiniciar_mi_equipo(p_token uuid)
+returns void language plpgsql security definer set search_path=public as $$
+declare e equipos%rowtype;
+begin
+ select * into e from equipos where token=p_token;
+ if not found then return; end if;
+ if e.completados>0 then raise exception 'Ya avanzaron en el juego: pedile al organizador que borre el equipo'; end if;
+ delete from equipos where id=e.id;
+end $$;
+revoke execute on function reiniciar_mi_equipo(uuid) from public;
+grant execute on function reiniciar_mi_equipo(uuid) to anon, authenticated;
+
