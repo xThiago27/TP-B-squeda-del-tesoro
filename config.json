@@ -1,0 +1,381 @@
+{
+ "nombre_juego": "El código perdido de la Plaza del Congreso",
+ "duracion_minutos": 240,
+ "plaza_nombre": "Plaza del Congreso",
+ "mecanismo_validacion": "brujula_tramposa",
+ "brujula": {
+  "cambia_cada_segundos": 8,
+  "color_verdad": "rojo",
+  "color_miente": "azul",
+  "desvio_mentira_grados": 120
+ },
+ "puntaje": {
+  "por_acierto": 100,
+  "bonus_max_velocidad": 50,
+  "penal_error": 10,
+  "penal_respaldo": 30,
+  "penal_pista": 15
+ },
+ "simulacion_inicio": {
+  "lat": -34.6085,
+  "lng": -58.392
+ },
+ "puntos": [
+  {
+   "id": 1,
+   "nombre": "En frente de la auditoría",
+   "latitud": -34.609344,
+   "longitud": -58.39093,
+   "radio_metros": 15,
+   "pista": "Nivel 1: no hay tutorial. Plantate justo enfrente de la Auditoría. Acá nadie te hace code review, pero el edificio te va a mirar igual.",
+   "codigo_respaldo_manual": "AUDITORIA01",
+   "relato": "`classes` · «Si estás leyendo esto, el Glitch ya despertó. Soy la Arquitecta. Reconstruyan mi sistema antes de que lo borre.»",
+   "desafios": [
+    {
+     "pregunta": "¿Qué paradigma organiza el código mediante clases?",
+     "tipo": "opcion_multiple",
+     "opciones": [
+      "Funcional",
+      "Lógico",
+      "Orientado a objetos",
+      "Declarativo"
+     ],
+     "respuesta_correcta": "Orientado a objetos"
+    },
+    {
+     "tipo": "verdadero_falso",
+     "pregunta": "En programación orientada a objetos, un objeto es una instancia de una clase.",
+     "respuesta_correcta": "Verdadero"
+    }
+   ]
+  },
+  {
+   "id": 2,
+   "nombre": "Esquina Hotel Plaza Congreso",
+   "latitud": -34.609272,
+   "longitud": -58.390451,
+   "radio_metros": 15,
+   "pista": "Esquina de un hotel que conmemora el nombre de la plaza",
+   "codigo_respaldo_manual": "HOTEL02",
+   "relato": "`functions` · Cada función devuelve lo mismo si le das lo mismo: eso mantiene la calma del sistema. El Glitch, en cambio, devuelve algo distinto cada vez.",
+   "desafios": [
+    {
+     "pregunta": "¿Qué paradigma se basa en funciones matemáticas?",
+     "tipo": "opcion_multiple",
+     "opciones": [
+      "Funcional",
+      "Orientado a objetos",
+      "Imperativo",
+      "Lógico"
+     ],
+     "respuesta_correcta": "Funcional"
+    },
+    {
+     "tipo": "texto_libre",
+     "pregunta": "¿Qué imprime este código?  def f(x): return x*2  →  print(f(4))",
+     "respuesta_correcta": "8|ocho"
+    }
+   ]
+  },
+  {
+   "id": 3,
+   "nombre": "Banco de la Plaza",
+   "latitud": -34.609278,
+   "longitud": -58.390101,
+   "radio_metros": 15,
+   "pista": "Un farol de hierro dorado, con la base toda trabajada, custodia un cantero circular de pasto. A pocos metros tenés un pedestal de piedra con una vasija enorme. Rodeá el farol y buscá el banco más cercano",
+   "codigo_respaldo_manual": "BANCO03",
+   "relato": "`inherit` · El código hereda su forma de otro más antiguo. Aparece una firma: «A. — Congreso OS, versión 0».",
+   "desafios": [
+    {
+     "pregunta": "¿Qué concepto permite crear una clase a partir de otra?",
+     "tipo": "opcion_multiple",
+     "opciones": [
+      "Abstracción",
+      "Polimorfismo",
+      "Encapsulamiento",
+      "Herencia"
+     ],
+     "respuesta_correcta": "Herencia"
+    },
+    {
+     "tipo": "opcion_multiple",
+     "pregunta": "Si la clase Perro hereda de Animal, ¿cuál es la clase base?",
+     "respuesta_correcta": "Animal",
+     "opciones": [
+      "Perro",
+      "Animal",
+      "Objeto",
+      "Ninguna"
+     ]
+    }
+   ]
+  },
+  {
+   "id": 4,
+   "nombre": "Cine Gaumont",
+   "latitud": -34.609262,
+   "longitud": -58.389489,
+   "radio_metros": 15,
+   "pista": "Sentate cerca y mirá hacia el cine Gaumont.",
+   "codigo_respaldo_manual": "GAUMONT04",
+   "relato": "`poly` · Una misma orden hace cosas distintas según quién la recibe. Algo en el sistema responde de más: el Glitch está escuchando.",
+   "desafios": [
+    {
+     "pregunta": "¿Qué concepto permite que un objeto adopte diferentes comportamientos?",
+     "tipo": "opcion_multiple",
+     "opciones": [
+      "Herencia",
+      "Polimorfismo",
+      "Clase",
+      "Recursión"
+     ],
+     "respuesta_correcta": "Polimorfismo"
+    },
+    {
+     "tipo": "verdadero_falso",
+     "pregunta": "Sobrescribir un método en una subclase es un ejemplo de polimorfismo.",
+     "respuesta_correcta": "Verdadero"
+    }
+   ]
+  },
+  {
+   "id": 5,
+   "nombre": "Circunferencia del piso",
+   "latitud": -34.609512,
+   "longitud": -58.389489,
+   "radio_metros": 15,
+   "pista": "Acá el piso dibuja una circunferencia: parate adentro y recorré el borde, que es lo más cerca que vas a estar de un código con sentido.",
+   "codigo_respaldo_manual": "PISO05",
+   "relato": "`class` · Ya hay suficientes moldes para crear el mapa. La plaza se dibuja en la pantalla como un diagrama de flujo.",
+   "desafios": [
+    {
+     "pregunta": "¿Cómo se llama el molde que permite crear objetos?",
+     "tipo": "opcion_multiple",
+     "opciones": [
+      "Método",
+      "Variable",
+      "Instancia",
+      "Clase"
+     ],
+     "respuesta_correcta": "Clase"
+    },
+    {
+     "tipo": "texto_libre",
+     "pregunta": "¿Con qué palabra reservada se declara una clase en Java y en Python? (una palabra)",
+     "respuesta_correcta": "class"
+    }
+   ]
+  },
+  {
+   "id": 6,
+   "nombre": "Fuente Principal",
+   "latitud": -34.609513,
+   "longitud": -58.390162,
+   "radio_metros": 15,
+   "pista": "Con el Congreso de fondo y las fuentes detrás, entre un farol de varios brazos y otro pedestal con vasija, hay una reja baja verde y palomas con más prioridad que vos. Es la fuente principal: ubicate a su derecha.",
+   "codigo_respaldo_manual": "FUENTE06",
+   "relato": "`loop` · Paso a paso, el sistema recupera su ritmo. El Glitch repite un mismo mensaje en bucle: «línea 1, línea 1, línea 1…».",
+   "desafios": [
+    {
+     "pregunta": "¿Qué paradigma se basa en instrucciones paso a paso?",
+     "tipo": "opcion_multiple",
+     "opciones": [
+      "Lógico",
+      "Declarativo",
+      "Imperativo",
+      "Funcional"
+     ],
+     "respuesta_correcta": "Imperativo"
+    },
+    {
+     "tipo": "texto_libre",
+     "pregunta": "¿Cuántas veces se ejecuta este bucle?  for (i = 0; i < 5; i++)",
+     "respuesta_correcta": "5|cinco"
+    }
+   ]
+  },
+  {
+   "id": 7,
+   "nombre": "Entre Fuente y Estatua",
+   "latitud": -34.609555,
+   "longitud": -58.39074,
+   "radio_metros": 15,
+   "pista": "Una vereda larga de baldosas con bancos blancos de cemento en fila, un farol dorado en el borde y una reja alta que separa el camino del Congreso. Estás entre la fuente y la estatua.",
+   "codigo_respaldo_manual": "ESTATUA07",
+   "relato": "`private` · Los datos internos quedan a salvo tras una puerta que solo el sistema puede abrir. El Glitch retrocede.",
+   "desafios": [
+    {
+     "pregunta": "¿Qué elemento de la POO protege los datos internos de un objeto?",
+     "tipo": "opcion_multiple",
+     "opciones": [
+      "Herencia",
+      "Encapsulamiento",
+      "Polimorfismo",
+      "Abstracción"
+     ],
+     "respuesta_correcta": "Encapsulamiento"
+    },
+    {
+     "tipo": "opcion_multiple",
+     "pregunta": "¿Qué modificador de acceso, en Java, oculta un atributo fuera de su clase?",
+     "respuesta_correcta": "private",
+     "opciones": [
+      "public",
+      "static",
+      "private",
+      "final"
+     ]
+    }
+   ]
+  },
+  {
+   "id": 8,
+   "nombre": "Sur de la Estatua",
+   "latitud": -34.609976,
+   "longitud": -58.39093,
+   "radio_metros": 15,
+   "pista": "Buscá la estatua y caminá hacia el sur, dándole la espalda al Congreso.",
+   "codigo_respaldo_manual": "SUR08",
+   "relato": "`query` · Ahora el sistema pide qué resultado quiere sin explicar cada paso. Una nota de la Arquitecta: «El Glitch no es un virus».",
+   "desafios": [
+    {
+     "pregunta": "¿Qué paradigma describe qué resultado se quiere sin detallar los pasos?",
+     "tipo": "opcion_multiple",
+     "opciones": [
+      "Declarativo",
+      "Estructurado",
+      "Imperativo",
+      "Procedural"
+     ],
+     "respuesta_correcta": "Declarativo"
+    },
+    {
+     "tipo": "verdadero_falso",
+     "pregunta": "SQL es un ejemplo de lenguaje declarativo.",
+     "respuesta_correcta": "Verdadero"
+    }
+   ]
+  },
+  {
+   "id": 9,
+   "nombre": "Estatua y Congreso",
+   "latitud": -34.609702,
+   "longitud": -58.391206,
+   "radio_metros": 15,
+   "pista": "La escalinata del Congreso asomando atrás. Mirá el piso: hay una tapa de hierro con letras grabadas. Entre la estatua y el Congreso, pegadito a la reja.",
+   "codigo_respaldo_manual": "CONGRESO09",
+   "relato": "`recursion` · Cada fragmento guarda un recuerdo de los anteriores, como una función que se llama a sí misma. Falta poco.",
+   "desafios": [
+    {
+     "pregunta": "¿Cómo se llama una función que puede llamarse a sí misma?",
+     "tipo": "opcion_multiple",
+     "opciones": [
+      "Lambda",
+      "Bucle",
+      "Recursión",
+      "Callback"
+     ],
+     "respuesta_correcta": "Recursión"
+    },
+    {
+     "tipo": "texto_libre",
+     "pregunta": "¿Cómo se llama la condición que detiene a una función recursiva? (dos palabras)",
+     "respuesta_correcta": "caso base|caso de corte"
+    }
+   ]
+  },
+  {
+   "id": 10,
+   "nombre": "Monumento Ricardo Balbín",
+   "latitud": -34.609887,
+   "longitud": -58.389671,
+   "radio_metros": 15,
+   "pista": "Troncos enormes que tienen más historial que un repo de 2010. Buscá el monumento a Ricardo Balbín y pasá a su izquierda.",
+   "codigo_respaldo_manual": "BALBIN10",
+   "relato": "`prolog` · Aparecen reglas escritas en lógica. Una dice: «Si un comentario no se cierra, todo lo que sigue se ignora».",
+   "desafios": [
+    {
+     "pregunta": "¿Qué lenguaje se asocia con la programación lógica?",
+     "tipo": "opcion_multiple",
+     "opciones": [
+      "Java",
+      "Python",
+      "Haskell",
+      "Prolog"
+     ],
+     "respuesta_correcta": "Prolog"
+    },
+    {
+     "tipo": "verdadero_falso",
+     "pregunta": "En Prolog un programa se escribe con hechos y reglas.",
+     "respuesta_correcta": "Verdadero"
+    }
+   ]
+  },
+  {
+   "id": 11,
+   "nombre": "Biblioteca y Estatua",
+   "latitud": -34.610029,
+   "longitud": -58.391016,
+   "radio_metros": 15,
+   "pista": "Entre la historia y los libros... ubicate justo en el medio entre la biblioteca y la estatua.",
+   "codigo_respaldo_manual": "BIBLIO11",
+   "relato": "`abstract` · Solo queda lo esencial. Detrás de todo el código hay una única línea que nadie había leído.",
+   "desafios": [
+    {
+     "pregunta": "¿Qué concepto de la POO oculta detalles internos y muestra lo esencial?",
+     "tipo": "opcion_multiple",
+     "opciones": [
+      "Instanciación",
+      "Abstracción",
+      "Herencia",
+      "Polimorfismo"
+     ],
+     "respuesta_correcta": "Abstracción"
+    },
+    {
+     "tipo": "opcion_multiple",
+     "pregunta": "¿Cómo se llama una clase que no se puede instanciar directamente?",
+     "respuesta_correcta": "Abstracta",
+     "opciones": [
+      "Final",
+      "Estática",
+      "Anónima",
+      "Abstracta"
+     ]
+    }
+   ]
+  },
+  {
+   "id": 12,
+   "nombre": "Vereda 10 de Diciembre",
+   "latitud": -34.609701,
+   "longitud": -58.391384,
+   "radio_metros": 15,
+   "pista": "Apoyá un pie en esa vereda democrática y considerate libre de errores, compilado y listo.",
+   "codigo_respaldo_manual": "VEREDA12",
+   "relato": "`facts` · Última pieza: hechos y reglas que unen todo el sistema. Está listo para compilar.",
+   "desafios": [
+    {
+     "pregunta": "¿Qué paradigma usa reglas y hechos para obtener conclusiones?",
+     "tipo": "opcion_multiple",
+     "opciones": [
+      "Lógico",
+      "Imperativo",
+      "Orientado a Objetos",
+      "Funcional"
+     ],
+     "respuesta_correcta": "Lógico"
+    },
+    {
+     "tipo": "texto_libre",
+     "pregunta": "¿Qué paradigma se basa en funciones puras y evita el estado compartido? (una palabra)",
+     "respuesta_correcta": "funcional"
+    }
+   ]
+  }
+ ],
+ "final": "🎉 ¡COMPILACIÓN EXITOSA! El Glitch era un comentario sin cerrar en la línea 1, un error de la propia Arquitecta. Al corregirlo, el sistema vuelve a funcionar y la plaza queda protegida. Los debuggers lo lograron: recuperaron el código perdido trabajando en equipo.",
+ "codigo_partida": "PLAZA-2026"
+}
