@@ -1,0 +1,303 @@
+{
+ "nombre_juego": "El código perdido de la Plaza del Congreso",
+ "duracion_minutos": 240,
+ "plaza_nombre": "Plaza del Congreso",
+ "mecanismo_validacion": "brujula_tramposa",
+ "brujula": {
+  "cambia_cada_segundos": 8,
+  "color_verdad": "rojo",
+  "color_miente": "azul",
+  "desvio_mentira_grados": 120
+ },
+ "puntaje": {
+  "por_acierto": 100,
+  "bonus_max_velocidad": 50,
+  "penal_error": 10,
+  "penal_respaldo": 30,
+  "penal_pista": 15
+ },
+ "simulacion_inicio": {
+  "lat": -34.6085,
+  "lng": -58.392
+ },
+ "puntos": [
+  {
+   "id": 1,
+   "nombre": "En frente de la auditoría",
+   "latitud": -34.609344,
+   "longitud": -58.39093,
+   "radio_metros": 15,
+   "pista": "Nivel 1: no hay tutorial. Plantate justo enfrente de la Auditoría. Acá nadie te hace code review, pero el edificio te va a mirar igual.",
+   "codigo_respaldo_manual": "AUDITORIA01",
+   "relato": "`classes` · «Si estás leyendo esto, el Glitch ya despertó. Soy la Arquitecta. Reconstruyan mi sistema antes de que lo borre.»",
+   "desafios": [
+    {
+     "pregunta": "¿Qué paradigma organiza el código mediante clases?",
+     "tipo": "opcion_multiple",
+     "opciones": [
+      "Funcional",
+      "Lógico",
+      "Orientado a objetos",
+      "Declarativo"
+     ],
+     "respuesta_correcta": "Orientado a objetos"
+    }
+   ]
+  },
+  {
+   "id": 2,
+   "nombre": "Esquina Hotel Plaza Congreso",
+   "latitud": -34.609272,
+   "longitud": -58.390451,
+   "radio_metros": 15,
+   "pista": "Esquina de un hotel que conmemora el nombre de la plaza",
+   "codigo_respaldo_manual": "HOTEL02",
+   "relato": "`functions` · Cada función devuelve lo mismo si le das lo mismo: eso mantiene la calma del sistema. El Glitch, en cambio, devuelve algo distinto cada vez.",
+   "desafios": [
+    {
+     "pregunta": "¿Qué paradigma se basa en funciones matemáticas?",
+     "tipo": "opcion_multiple",
+     "opciones": [
+      "Funcional",
+      "Orientado a objetos",
+      "Imperativo",
+      "Lógico"
+     ],
+     "respuesta_correcta": "Funcional"
+    }
+   ]
+  },
+  {
+   "id": 3,
+   "nombre": "Banco de la Plaza",
+   "latitud": -34.609278,
+   "longitud": -58.390101,
+   "radio_metros": 15,
+   "pista": "Un farol de hierro dorado, con la base toda trabajada, custodia un cantero circular de pasto. A pocos metros tenés un pedestal de piedra con una vasija enorme. Rodeá el farol y buscá el banco más cercano",
+   "codigo_respaldo_manual": "BANCO03",
+   "relato": "`inherit` · El código hereda su forma de otro más antiguo. Aparece una firma: «A. — Congreso OS, versión 0».",
+   "desafios": [
+    {
+     "pregunta": "¿Qué concepto permite crear una clase a partir de otra?",
+     "tipo": "opcion_multiple",
+     "opciones": [
+      "Abstracción",
+      "Polimorfismo",
+      "Encapsulamiento",
+      "Herencia"
+     ],
+     "respuesta_correcta": "Herencia"
+    }
+   ]
+  },
+  {
+   "id": 4,
+   "nombre": "Cine Gaumont",
+   "latitud": -34.609262,
+   "longitud": -58.389489,
+   "radio_metros": 15,
+   "pista": "Sentate cerca y mirá hacia el cine Gaumont.",
+   "codigo_respaldo_manual": "GAUMONT04",
+   "relato": "`poly` · Una misma orden hace cosas distintas según quién la recibe. Algo en el sistema responde de más: el Glitch está escuchando.",
+   "desafios": [
+    {
+     "pregunta": "¿Qué concepto permite que un objeto adopte diferentes comportamientos?",
+     "tipo": "opcion_multiple",
+     "opciones": [
+      "Herencia",
+      "Polimorfismo",
+      "Clase",
+      "Recursión"
+     ],
+     "respuesta_correcta": "Polimorfismo"
+    }
+   ]
+  },
+  {
+   "id": 5,
+   "nombre": "Parque de juegos",
+   "latitud": -34.609676,
+   "longitud": -58.388167,
+   "radio_metros": 15,
+   "pista": "Parate entre el \"Pensador de Rodin\" y el mastil con la bandera nacional, mira a los costados.",
+   "codigo_respaldo_manual": "JUEGOS05",
+   "relato": "`class` · Ya hay suficientes moldes para crear el mapa. La plaza se dibuja en la pantalla como un diagrama de flujo.",
+   "desafios": [
+    {
+     "pregunta": "¿Cómo se llama el molde que permite crear objetos?",
+     "tipo": "opcion_multiple",
+     "opciones": [
+      "Método",
+      "Variable",
+      "Instancia",
+      "Clase"
+     ],
+     "respuesta_correcta": "Clase"
+    }
+   ]
+  },
+  {
+   "id": 6,
+   "nombre": "Monumento Kilometro 0",
+   "latitud": -34.609561,
+   "longitud": -58.388889,
+   "radio_metros": 15,
+   "pista": "Pasando la entrada a un misterioso garaje, encontraras una estatua que habla de kilometraje.",
+   "codigo_respaldo_manual": "KM06",
+   "relato": "`loop` · Paso a paso, el sistema recupera su ritmo. El Glitch repite un mismo mensaje en bucle: «línea 1, línea 1, línea 1…».",
+   "desafios": [
+    {
+     "pregunta": "¿Qué paradigma se basa en instrucciones paso a paso?",
+     "tipo": "opcion_multiple",
+     "opciones": [
+      "Lógico",
+      "Declarativo",
+      "Imperativo",
+      "Funcional"
+     ],
+     "respuesta_correcta": "Imperativo"
+    }
+   ]
+  },
+  {
+   "id": 7,
+   "nombre": "Circunferencia del piso",
+   "latitud": -34.609512,
+   "longitud": -58.389489,
+   "radio_metros": 15,
+   "pista": "Acá el piso dibuja una circunferencia: parate adentro y recorré el borde, que es lo más cerca que vas a estar de un código con sentido.",
+   "codigo_respaldo_manual": "PISO07",
+   "relato": "`private` · Los datos internos quedan a salvo tras una puerta que solo el sistema puede abrir. El Glitch retrocede.",
+   "desafios": [
+    {
+     "pregunta": "¿Qué elemento de la POO protege los datos internos de un objeto?",
+     "tipo": "opcion_multiple",
+     "opciones": [
+      "Herencia",
+      "Encapsulamiento",
+      "Polimorfismo",
+      "Abstracción"
+     ],
+     "respuesta_correcta": "Encapsulamiento"
+    }
+   ]
+  },
+  {
+   "id": 8,
+   "nombre": "Monumento Ricardo Balbín",
+   "latitud": -34.609887,
+   "longitud": -58.389671,
+   "radio_metros": 15,
+   "pista": "Un camino de tierra con borde de piedra curvo y troncos enormes que tienen más historial que un repo de 2010. Buscá el monumento a Ricardo Balbín y pasá a sus espaldas.",
+   "codigo_respaldo_manual": "BALBIN08",
+   "relato": "`query` · Ahora el sistema pide qué resultado quiere sin explicar cada paso. Una nota de la Arquitecta: «El Glitch no es un virus».",
+   "desafios": [
+    {
+     "pregunta": "¿Qué paradigma describe qué resultado se quiere sin detallar los pasos?",
+     "tipo": "opcion_multiple",
+     "opciones": [
+      "Declarativo",
+      "Estructurado",
+      "Imperativo",
+      "Procedural"
+     ],
+     "respuesta_correcta": "Declarativo"
+    }
+   ]
+  },
+  {
+   "id": 9,
+   "nombre": "Fuente Principal",
+   "latitud": -34.609513,
+   "longitud": -58.390162,
+   "radio_metros": 15,
+   "pista": "Con el Congreso de fondo y las fuentes detrás, entre un farol de varios brazos y otro pedestal con vasija, hay una reja alta negra y palomas con más prioridad que vos. Es la fuente principal: no hace falta entrar, ubicate del lado de afuera, en la vereda de baldosas, a su derecha.",
+   "codigo_respaldo_manual": "FUENTE09",
+   "relato": "`recursion` · Cada fragmento guarda un recuerdo de los anteriores, como una función que se llama a sí misma. Falta poco.",
+   "desafios": [
+    {
+     "pregunta": "¿Cómo se llama una función que puede llamarse a sí misma?",
+     "tipo": "opcion_multiple",
+     "opciones": [
+      "Lambda",
+      "Bucle",
+      "Recursión",
+      "Callback"
+     ],
+     "respuesta_correcta": "Recursión"
+    }
+   ]
+  },
+  {
+   "id": 10,
+   "nombre": "Estatua y Congreso",
+   "latitud": -34.609702,
+   "longitud": -58.391206,
+   "radio_metros": 15,
+   "pista": "La escalinata del Congreso asomando atrás. Mirá el piso: hay una tapa de hierro con letras grabadas. Entre la estatua y el Congreso, pegadito a la reja.",
+   "codigo_respaldo_manual": "CONGRESO10",
+   "relato": "`prolog` · Aparecen reglas escritas en lógica. Una dice: «Si un comentario no se cierra, todo lo que sigue se ignora».",
+   "desafios": [
+    {
+     "pregunta": "¿Qué lenguaje se asocia con la programación lógica?",
+     "tipo": "opcion_multiple",
+     "opciones": [
+      "Java",
+      "Python",
+      "Haskell",
+      "Prolog"
+     ],
+     "respuesta_correcta": "Prolog"
+    }
+   ]
+  },
+  {
+   "id": 11,
+   "nombre": "Biblioteca y Estatua",
+   "latitud": -34.610029,
+   "longitud": -58.391016,
+   "radio_metros": 15,
+   "pista": "Entre la historia y los libros... ubicate justo en el medio entre la biblioteca y la estatua.",
+   "codigo_respaldo_manual": "BIBLIO11",
+   "relato": "`abstract` · Solo queda lo esencial. Detrás de todo el código hay una única línea que nadie había leído.",
+   "desafios": [
+    {
+     "pregunta": "¿Qué concepto de la POO oculta detalles internos y muestra lo esencial?",
+     "tipo": "opcion_multiple",
+     "opciones": [
+      "Instanciación",
+      "Abstracción",
+      "Herencia",
+      "Polimorfismo"
+     ],
+     "respuesta_correcta": "Abstracción"
+    }
+   ]
+  },
+  {
+   "id": 12,
+   "nombre": "Vereda 10 de Diciembre",
+   "latitud": -34.609701,
+   "longitud": -58.391384,
+   "radio_metros": 15,
+   "pista": "Apoyá un pie en esa vereda democrática y considerate libre de errores, compilado y listo.",
+   "codigo_respaldo_manual": "VEREDA12",
+   "relato": "`facts` · Última pieza: hechos y reglas que unen todo el sistema. Está listo para compilar.",
+   "desafios": [
+    {
+     "pregunta": "¿Qué paradigma usa reglas y hechos para obtener conclusiones?",
+     "tipo": "opcion_multiple",
+     "opciones": [
+      "Lógico",
+      "Imperativo",
+      "Orientado a Objetos",
+      "Funcional"
+     ],
+     "respuesta_correcta": "Lógico"
+    }
+   ]
+  }
+ ],
+ "final": "🎉 ¡COMPILACIÓN EXITOSA! El Glitch era un comentario sin cerrar en la línea 1, un error de la propia Arquitecta. Al corregirlo, el sistema vuelve a funcionar y la plaza queda protegida. Los debuggers lo lograron: recuperaron el código perdido trabajando en equipo.",
+ "codigo_partida": "PLAZA-2026"
+}
